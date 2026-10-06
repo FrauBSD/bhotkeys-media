@@ -1,0 +1,57 @@
+.\" Copyright (c) 2026 Devin Teske <dteske@FreeBSD.org>
+.\"
+.\" SPDX-License-Identifier: BSD-2-Clause
+.\"
+.Dd October 4, 2026
+.Dt MPRIS-CONTROL 1
+.Os
+.Sh NAME
+.Nm mpris-control
+.Nd play, pause, rewind, and fast forward the active player
+.Sh SYNOPSIS
+.Nm Cm play-pause
+.Nm Cm rewind
+.Op Ar seconds
+.Nm Cm forward
+.Op Ar seconds
+.Sh DESCRIPTION
+.Nm
+drives the active MPRIS player on the session bus.
+.Cm play-pause
+toggles playback.
+.Cm rewind
+and
+.Cm forward
+seek by
+.Ar seconds .
+The default is 10.
+.Pp
+Every bus name under
+.Cm org.mpris.MediaPlayer2.*
+is a candidate.
+The first one whose playback status is Playing is used.
+When none is playing, the first candidate is used.
+.Pp
+When the default session bus has no player, or there is no
+session bus,
+.Nm
+reads
+.Ev DBUS_SESSION_BUS_ADDRESS
+from the environment of this user's processes and tries those
+buses.
+That is how a player started on a private bus is still found.
+.Sh ENVIRONMENT
+.Bl -tag -width "DBUS_SESSION_BUS_ADDRESS"
+.It Ev DBUS_SESSION_BUS_ADDRESS
+Session bus.
+A private bus with the same address is not tried twice.
+.El
+.Sh EXIT STATUS
+.Nm
+exits 0 when the player accepts the call.
+It exits 1 when no MPRIS player is found.
+A missing command, or a seek that is not a positive number, exits 2.
+.Sh SEE ALSO
+.Xr bhotkeys 1
+.Sh AUTHORS
+.An Devin Teske Aq Mt dteske@FreeBSD.org

@@ -1,0 +1,9 @@
+id fn-next
+group x11/bhotkeys-media
+label Fast Forward
+chord XF86AudioNext
+chord Shift+XF86AudioNext gnome mate
+command mpris-control forward
+repeat 0
+greeter 0
+desc Fast forward the active audio or video. Hardware name XF86AudioNext.

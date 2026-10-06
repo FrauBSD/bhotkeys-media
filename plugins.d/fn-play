@@ -1,0 +1,9 @@
+id fn-play
+group x11/bhotkeys-media
+label Play pause
+chord XF86AudioPlay
+enabled 0 gnome mate
+command mpris-control play-pause
+repeat 0
+greeter 0
+desc Play or pause the active audio or video.

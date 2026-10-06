@@ -1,0 +1,9 @@
+id fn-prev
+group x11/bhotkeys-media
+label Rewind
+chord XF86AudioPrev
+chord Shift+XF86AudioPrev gnome mate
+command mpris-control rewind
+repeat 0
+greeter 0
+desc Rewind the active audio or video. Hardware name XF86AudioPrev.
